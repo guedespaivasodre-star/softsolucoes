@@ -1,38 +1,105 @@
+// Inicializar EmailJS com sua chave pública
+// Você precisa configurar isto com sua chave real
+emailjs.init("YOUR_PUBLIC_KEY_HERE");
+
 document
 .getElementById("formulario")
 .addEventListener("submit", function(e){
 
 e.preventDefault();
 
-const nome =
-document.getElementById("nome").value;
+const nome = document.getElementById("nome").value;
+const empresa = document.getElementById("empresa").value;
+const email = document.getElementById("email").value;
+const telefone = document.getElementById("telefone").value;
+const descricao = document.getElementById("descricao").value;
 
-const empresa =
-document.getElementById("empresa").value;
+// Validar campos obrigatórios
+if (!nome || !email || !descricao) {
+    alert("Por favor, preencha todos os campos obrigatórios (Nome, Email e Descrição)!");
+    return;
+}
 
-const telefone =
-document.getElementById("telefone").value;
+// Preparar dados para EmailJS
+const templateParams = {
+    to_email: "contatosoftsolucoes@gmail.com",
+    from_name: nome,
+    from_email: email,
+    company: empresa || "Não informado",
+    phone: telefone || "Não informado",
+    message: descricao
+};
 
-const descricao =
-document.getElementById("descricao").value;
+// Mostrar loading
+const button = document.querySelector("button[type='submit']");
+const originalText = button.textContent;
+button.textContent = "Enviando...";
+button.disabled = true;
 
-const mensagem =
-`Olá, gostaria de solicitar um orçamento.
+// Enviar email
+emailjs.send("YOUR_SERVICE_ID_HERE", "YOUR_TEMPLATE_ID_HERE", templateParams)
+    .then(function(response) {
+        console.log("Email enviado com sucesso:", response);
+        alert("✅ Solicitação enviada com sucesso!\n\nEm breve entraremos em contato via email ou WhatsApp.");
+        
+        // Limpar formulário
+        document.getElementById("formulario").reset();
+        
+        // Restaurar botão
+        button.textContent = originalText;
+        button.disabled = false;
+        
+        // Opcional: Também abrir WhatsApp
+        const numero = "5596991951440";
+        const mensagem = `Olá, gostaria de solicitar um orçamento.
 
 Nome: ${nome}
 
 Empresa: ${empresa}
 
+Email: ${email}
+
 WhatsApp: ${telefone}
 
 Necessidade:
 ${descricao}`;
+        
+        // Abrir WhatsApp em nova aba
+        setTimeout(() => {
+            window.open(
+                `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
+                "_blank"
+            );
+        }, 500);
+    }, function(error) {
+        console.error("Erro ao enviar email:", error);
+        alert("❌ Erro ao enviar solicitação.\n\nTente novamente ou entre em contato via WhatsApp.");
+        
+        // Restaurar botão
+        button.textContent = originalText;
+        button.disabled = false;
+        
+        // Abrir WhatsApp como fallback
+        const numero = "5596991951440";
+        const mensagem = `Olá, gostaria de solicitar um orçamento.
 
-const numero = "5596991951440";
+Nome: ${nome}
 
-window.open(
-`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
-"_blank"
-);
+Empresa: ${empresa}
+
+Email: ${email}
+
+WhatsApp: ${telefone}
+
+Necessidade:
+${descricao}`;
+        
+        setTimeout(() => {
+            window.open(
+                `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
+                "_blank"
+            );
+        }, 500);
+    });
 
 });
