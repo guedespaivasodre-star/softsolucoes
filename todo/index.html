@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas | Soft Soluções</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="todo-app">
+        <header>
+            <h1>📝 Minha Lista de Tarefas</h1>
+            <p>Organize suas atividades e aumente sua produtividade</p>
+        </header>
+
+        <div class="input-section">
+            <input 
+                type="text" 
+                id="taskInput" 
+                placeholder="Adicione uma nova tarefa..."
+                class="task-input"
+            >
+            <button id="addBtn" class="btn-add">Adicionar</button>
+        </div>
+
+        <div class="filter-section">
+            <button class="filter-btn active" data-filter="all">Todas (0)</button>
+            <button class="filter-btn" data-filter="active">Ativas (0)</button>
+            <button class="filter-btn" data-filter="completed">Concluídas (0)</button>
+        </div>
+
+        <ul id="taskList" class="task-list">
+            <!-- Tasks will be added here -->
+        </ul>
+
+        <div class="empty-state" id="emptyState">
+            <p>🎉 Nenhuma tarefa! Adicione uma para começar.</p>
+        </div>
+
+        <div class="actions">
+            <button id="clearCompleted" class="btn-secondary">Limpar Concluídas</button>
+            <button id="clearAll" class="btn-danger">Limpar Tudo</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

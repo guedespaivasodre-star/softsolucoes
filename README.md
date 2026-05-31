@@ -6,14 +6,25 @@ Site da Soft Soluções - Desenvolvimento de sistemas web, aplicativos, painéis
 
 ## 📋 Funcionalidades
 
+### Site Principal
 - ✅ Design responsivo
 - ✅ Formulário de orçamento integrado com WhatsApp
 - ✅ Serviços destacados
 - ✅ Layout moderno com tema escuro
 
+### Aplicação To-Do List
+- ✅ Adicionar, editar e deletar tarefas
+- ✅ Marcar tarefas como concluídas
+- ✅ Filtrar tarefas (Todas, Ativas, Concluídas)
+- ✅ Armazenamento local (Local Storage)
+- ✅ Data de criação de tarefas
+- ✅ Design responsivo e moderno
+- ✅ Interface intuitiva
+
 ## 🌐 Acesso
 
-Visite: [https://guedespaivasodre-star.github.io/softsolucoes](https://guedespaivasodre-star.github.io/softsolucoes)
+- **Site Principal:** [https://guedespaivasodre-star.github.io/softsolucoes](https://guedespaivasodre-star.github.io/softsolucoes)
+- **To-Do List:** [https://guedespaivasodre-star.github.io/softsolucoes/todo](https://guedespaivasodre-star.github.io/softsolucoes/todo)
 
 ## 📞 Contato
 
@@ -24,5 +35,13 @@ Visite: [https://guedespaivasodre-star.github.io/softsolucoes](https://guedespai
 
 - HTML5
 - CSS3
-- JavaScript
+- JavaScript (Vanilla)
+- Local Storage API
 - GitHub Pages
+
+## 🎨 Design
+
+- Gradiente moderno (roxo/azul)
+- Responsivo para mobile
+- Animações suaves
+- Interface intuitiva
