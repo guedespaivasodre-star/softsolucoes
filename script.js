@@ -1,6 +1,5 @@
-// Inicializar EmailJS com sua chave pública
-// Você precisa configurar isto com sua chave real
-emailjs.init("YOUR_PUBLIC_KEY_HERE");
+// Inicializar EmailJS com chave pública
+emailjs.init("McRRX-klNtC7w7-rV");
 
 document
 .getElementById("formulario")
@@ -37,7 +36,7 @@ button.textContent = "Enviando...";
 button.disabled = true;
 
 // Enviar email
-emailjs.send("YOUR_SERVICE_ID_HERE", "YOUR_TEMPLATE_ID_HERE", templateParams)
+emailjs.send("DT__vxPXKXL4b1GTZEhVU", "template_softsolucoes", templateParams)
     .then(function(response) {
         console.log("Email enviado com sucesso:", response);
         alert("✅ Solicitação enviada com sucesso!\n\nEm breve entraremos em contato via email ou WhatsApp.");
