@@ -1,112 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Soluções | Sistemas Sob Medida</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Soft Soluções · Sistemas Personalizados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#04060f;--bg2:#080c1a;--bg3:#0d1226;
+  --glass:rgba(255,255,255,0.04);--glass2:rgba(255,255,255,0.07);
+  --border:rgba(99,179,237,0.15);--border2:rgba(99,179,237,0.3);
+  --accent:#4f8ef7;--accent2:#63b3ed;--accent3:#7c3aed;
+  --text:#e2e8f0;--muted:#6b7280;--dim:#9ca3af;--green:#10b981;
+}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+.mono{font-family:'JetBrains Mono',monospace}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(79,142,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,0.04) 1px,transparent 1px);
+  background-size:40px 40px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(4,6,15,0.9);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:0 1.5rem;height:52px;
+  display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-icon{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent3));border-radius:6px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-size:14px;font-weight:600}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:12px;color:var(--dim);text-decoration:none;cursor:pointer;transition:.2s}
+.nav-links a:hover{color:var(--accent2)}
+.nav-btn{background:linear-gradient(135deg,var(--accent),var(--accent3));border:none;color:white;padding:6px 14px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Space Grotesk',sans-serif}
+
+main{position:relative;z-index:1;padding-top:52px}
+
+.hero{padding:2.5rem 1.5rem 2rem;text-align:center;position:relative}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:400px;height:250px;background:radial-gradient(ellipse,rgba(79,142,247,0.09) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);border-radius:100px;padding:4px 12px;margin-bottom:1rem;font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--accent2);letter-spacing:1px}
+.pulse{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.4)}50%{box-shadow:0 0 0 5px rgba(16,185,129,0)}}
+h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1.1;margin-bottom:1rem;letter-spacing:-1.5px}
+h1 span{background:linear-gradient(135deg,var(--accent2),var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:14px;color:var(--dim);max-width:420px;margin:0 auto 1.5rem;line-height:1.6}
+.hero-actions{display:flex;gap:8px;justify-content:center;margin-bottom:2rem}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent3));border:none;color:white;padding:10px 22px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:.2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text);padding:10px 22px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:.2s}
+.btn-outline:hover{background:var(--glass2)}
+.stats{display:flex;gap:2rem;justify-content:center;padding-top:1.5rem;border-top:1px solid var(--border)}
+.stat-n{font-size:22px;font-weight:700}.stat-n span{color:var(--accent)}
+.stat-l{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:1px}
+
+section{padding:2rem 1.5rem;max-width:1000px;margin:0 auto}
+.section-tag{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:.4rem}
+.section-title{font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:-1px;margin-bottom:.5rem}
+.section-sub{color:var(--dim);font-size:13px;line-height:1.6;max-width:420px;margin-bottom:1.25rem}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.service-card{background:var(--bg2);padding:1.25rem;transition:.3s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--accent3));opacity:0;transition:.3s}
+.service-card:hover::before{opacity:.05}
+.service-card:hover{background:var(--bg3)}
+.s-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.625rem;font-size:16px;position:relative;z-index:1}
+.s-icon.blue{background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2)}
+.s-icon.purple{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2)}
+.s-icon.green{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
+.s-icon.orange{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)}
+.s-name{font-size:12px;font-weight:600;margin-bottom:.3rem;position:relative;z-index:1}
+.s-desc{font-size:11px;color:var(--muted);line-height:1.5;position:relative;z-index:1}
+
+.process{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.75rem;margin-top:1.25rem}
+.proc-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:1rem}
+.proc-num{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);letter-spacing:2px;margin-bottom:.5rem}
+.proc-title{font-size:12px;font-weight:600;margin-bottom:.3rem}
+.proc-desc{font-size:11px;color:var(--muted);line-height:1.5}
+
+.form-section{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden}
+.form-section::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(79,142,247,0.06),transparent 70%);pointer-events:none}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.form-full{grid-column:1/-1}
+.form-group{display:flex;flex-direction:column;gap:4px}
+label{font-size:10px;color:var(--dim);letter-spacing:.5px;font-family:'JetBrains Mono',monospace}
+input,select,textarea{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:9px 12px;color:var(--text);font-size:12px;font-family:'Space Grotesk',sans-serif;outline:none;transition:.2s;width:100%}
+input:focus,textarea:focus{border-color:var(--accent);background:rgba(79,142,247,0.05)}
+select option{background:var(--bg3)}
+textarea{resize:vertical;min-height:80px}
+::placeholder{color:var(--muted)}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent3));border:none;color:white;padding:11px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:.2s}
+.submit-btn:hover{opacity:.85}
+
+.contact-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.25rem}
+.c-card{flex:1;min-width:140px;background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:1rem;display:flex;align-items:center;gap:.75rem}
+.c-icon{font-size:16px;flex-shrink:0}
+.c-label{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:.15rem}
+.c-val{font-size:11px;font-weight:500;color:var(--accent2)}
+
+footer{border-top:1px solid var(--border);padding:1.25rem 1.5rem;text-align:center;position:relative;z-index:1}
+.footer-logo{font-size:13px;font-weight:700;margin-bottom:.25rem}
+.footer-copy{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+@media(max-width:600px){
+  .nav-links{display:none}
+  .form-grid{grid-template-columns:1fr}
+  .form-full{grid-column:1}
+  .stats{gap:1.25rem}
+}
+</style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <h1>🚀 Soft Soluções</h1>
-        <nav>
-            <a href="#servicos">Serviços</a>
-            <a href="#orcamento">Orçamento</a>
-            <a href="#contato">Contato</a>
-        </nav>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
     </div>
-</header>
+    <div class="logo-name">Soft Soluções</div>
+  </div>
+  <div class="nav-links">
+    <a onclick="document.getElementById('servicos').scrollIntoView({behavior:'smooth'})">Serviços</a>
+    <a onclick="document.getElementById('processo').scrollIntoView({behavior:'smooth'})">Processo</a>
+    <a onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Orçamento</a>
+    <a onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Contato</a>
+  </div>
+  <button class="nav-btn" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Solicitar Orçamento</button>
+</nav>
 
-<section class="hero">
-    <div class="container">
-        <h2>Sistemas personalizados para o seu negócio</h2>
-        <p>
-            Desenvolvemos sistemas para clínicas, empresas,
-            controle de estoque, painéis de senhas e soluções sob medida.
-        </p>
-
-        <a href="#orcamento" class="btn">
-            Solicitar Orçamento
-        </a>
+<main>
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-badge"><div class="pulse"></div>sistemas personalizados · sob medida</div>
+    <h1>Sistemas <span>personalizados</span><br>para o seu negócio</h1>
+    <p class="hero-sub">Desenvolvemos soluções digitais para clínicas, empresas, controle de estoque, painéis de senha e muito mais.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Solicitar Orçamento</button>
+      <button class="btn-outline" onclick="document.getElementById('servicos').scrollIntoView({behavior:'smooth'})">Ver Serviços</button>
     </div>
-</section>
+    <div class="stats">
+      <div><div class="stat-n">50<span>+</span></div><div class="stat-l">Projetos</div></div>
+      <div><div class="stat-n">100<span>%</span></div><div class="stat-l">Sob Medida</div></div>
+      <div><div class="stat-n">24<span>h</span></div><div class="stat-l">Suporte</div></div>
+      <div><div class="stat-n">5<span>★</span></div><div class="stat-l">Avaliação</div></div>
+    </div>
+  </div>
 
-<section id="servicos">
-    <div class="container">
-        <h2>Nossos Serviços</h2>
+  <section id="servicos">
+    <div class="section-tag">serviços</div>
+    <h2 class="section-title">Nossos Serviços</h2>
+    <p class="section-sub">Soluções tecnológicas adaptadas à realidade do seu negócio.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="s-icon blue">🌐</div><div class="s-name">Sistemas Web</div><div class="s-desc">Plataformas responsivas com painel administrativo completo.</div></div>
+      <div class="service-card"><div class="s-icon purple">📱</div><div class="s-name">Aplicativos</div><div class="s-desc">Apps mobile para iOS e Android com UX intuitivo.</div></div>
+      <div class="service-card"><div class="s-icon green">🏥</div><div class="s-name">Sistemas para Clínicas</div><div class="s-desc">Agendamento, prontuário e gestão de pacientes.</div></div>
+      <div class="service-card"><div class="s-icon orange">🔢</div><div class="s-name">Painel de Senhas</div><div class="s-desc">Filas digitais com totem, display e integração sonora.</div></div>
+      <div class="service-card"><div class="s-icon blue">📊</div><div class="s-name">Dashboards</div><div class="s-desc">Painéis em tempo real com métricas personalizadas.</div></div>
+      <div class="service-card"><div class="s-icon purple">⚙️</div><div class="s-name">Automação</div><div class="s-desc">Automatize processos e integrações do seu negócio.</div></div>
+    </div>
+  </section>
 
-        <div class="cards">
+  <section id="processo">
+    <div class="section-tag">processo</div>
+    <h2 class="section-title">Como Trabalhamos</h2>
+    <p class="section-sub">Metodologia ágil e transparente, do briefing à entrega.</p>
+    <div class="process">
+      <div class="proc-card"><div class="proc-num">01 · BRIEFING</div><div class="proc-title">Análise de Requisitos</div><div class="proc-desc">Mapeamos necessidades e definimos o escopo.</div></div>
+      <div class="proc-card"><div class="proc-num">02 · DESIGN</div><div class="proc-title">Prototipagem</div><div class="proc-desc">Wireframes para validação antes do desenvolvimento.</div></div>
+      <div class="proc-card"><div class="proc-num">03 · DEV</div><div class="proc-title">Desenvolvimento</div><div class="proc-desc">Código limpo e escalável com entregas incrementais.</div></div>
+      <div class="proc-card"><div class="proc-num">04 · ENTREGA</div><div class="proc-title">Deploy & Suporte</div><div class="proc-desc">Entrega em produção e suporte contínuo.</div></div>
+    </div>
+  </section>
 
-            <div class="card">
-                💻
-                <h3>Sistemas Web</h3>
-            </div>
-
-            <div class="card">
-                📱
-                <h3>Aplicativos</h3>
-            </div>
-
-            <div class="card">
-                🏥
-                <h3>Sistemas para Clínicas</h3>
-            </div>
-
-            <div class="card">
-                🎫
-                <h3>Painel de Senhas</h3>
-            </div>
-
-            <div class="card">
-                📊
-                <h3>Dashboards</h3>
-            </div>
-
-            <div class="card">
-                ⚙️
-                <h3>Automação</h3>
-            </div>
-
+  <section id="orcamento">
+    <div class="section-tag">orçamento</div>
+    <h2 class="section-title">Solicite um Orçamento</h2>
+    <p class="section-sub">Preencha o formulário e entraremos em contato em breve.</p>
+    <div class="form-section">
+      <form id="formulario">
+        <div class="form-grid">
+          <div class="form-group"><label>nome *</label><input type="text" id="nome" placeholder="Seu nome completo" required/></div>
+          <div class="form-group"><label>empresa</label><input type="text" id="empresa" placeholder="Nome da empresa"/></div>
+          <div class="form-group"><label>e-mail *</label><input type="email" id="email" placeholder="email@empresa.com.br" required/></div>
+          <div class="form-group"><label>whatsapp *</label><input type="tel" id="telefone" placeholder="(96) 99999-9999" required/></div>
+          <div class="form-group"><label>serviço de interesse</label>
+            <select id="servico"><option value="">Selecione um serviço</option><option>Sistema Web</option><option>Aplicativo Mobile</option><option>Sistema para Clínica</option><option>Painel de Senhas</option><option>Dashboard</option><option>Automação</option><option>Outro</option></select>
+          </div>
+          <div class="form-group"><label>investimento estimado</label>
+            <select id="investimento"><option value="">Faixa de investimento</option><option>Até R$ 2.000</option><option>R$ 2.000 – R$ 5.000</option><option>R$ 5.000 – R$ 15.000</option><option>Acima de R$ 15.000</option></select>
+          </div>
+          <div class="form-group form-full"><label>descreva sua necessidade *</label><textarea id="descricao" placeholder="Descreva o que você precisa, funcionalidades, prazo..." required></textarea></div>
+          <div class="form-full">
+            <button type="submit" class="submit-btn">Enviar Solicitação</button>
+          </div>
         </div>
+      </form>
     </div>
-</section>
+  </section>
 
-<section id="orcamento">
-    <div class="container">
-        <h2>Solicite um Orçamento</h2>
-
-        <form id="formulario">
-
-            <input type="text" id="nome" placeholder="Nome" required>
-
-            <input type="text" id="empresa" placeholder="Empresa">
-
-            <input type="email" id="email" placeholder="Email" required>
-
-            <input type="text" id="telefone" placeholder="WhatsApp">
-
-            <textarea
-                id="descricao"
-                placeholder="Descreva sua necessidade"
-                rows="6"
-                required></textarea>
-
-            <button type="submit">
-                Enviar Solicitação
-            </button>
-
-        </form>
+  <section id="contato" style="padding-bottom:1.5rem">
+    <div class="section-tag">contato</div>
+    <h2 class="section-title">Fale Conosco</h2>
+    <div class="contact-row">
+      <div class="c-card"><div class="c-icon">✉️</div><div><div class="c-label">e-mail</div><div class="c-val">contatosoftsolucoes@gmail.com</div></div></div>
+      <div class="c-card"><div class="c-icon">💬</div><div><div class="c-label">whatsapp</div><div class="c-val">(96) 99195-1440</div></div></div>
+      <div class="c-card"><div class="c-icon">⏱️</div><div><div class="c-label">atendimento</div><div class="c-val">Seg–Sex · 8h às 18h</div></div></div>
     </div>
-</section>
+  </section>
 
-<footer id="contato">
-    <h3>Soft Soluções</h3>
-    <p>📍 Macapá - AP</p>
-    <p>📞 (96) 99195-1440</p>
-    <p>📧 contatosoftsolucoes@gmail.com</p>
-</footer>
+  <footer>
+    <div class="footer-logo">Soft Soluções</div>
+    <div class="footer-copy">© 2025 · Todos os direitos reservados</div>
+  </footer>
+</main>
 
 <!-- EmailJS Library -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
